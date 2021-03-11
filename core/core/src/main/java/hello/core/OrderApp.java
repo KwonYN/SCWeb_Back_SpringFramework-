@@ -7,12 +7,26 @@ import hello.core.member.MemberServiceImple;
 import hello.core.order.Order;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImple();
-        OrderService orderService = new OrderServiceImpl();
+//        MemberService memberService = new MemberServiceImple();
+//        OrderService orderService = new OrderServiceImpl(memberRepository, discountPollicy);
+
+        // AppConfig
+//        AppConfig appConfig = new AppConfig();
+//        MemberService memberService = appConfig.memberService();
+//        OrderService orderService = appConfig.orderService();
+
+        // Spring 전환 : 그래도 그 밑에 있는 기존 코드들은 안변해!
+        ApplicationContext applicationContext
+                = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
 
         Long memberId = 2L;
         Member member = new Member(memberId, "MCSeok", Grade.VIP);

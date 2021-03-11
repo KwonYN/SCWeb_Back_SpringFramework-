@@ -4,13 +4,26 @@ import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImple;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberApp {
 
     public static void main(String[] args) {
         // 서비스 구현체 동적으로 할당
-        MemberService memberService = new MemberServiceImple();
-        
+//        MemberService memberService = new MemberServiceImple();
+
+        // AppConfig
+//        AppConfig appConfig = new AppConfig();
+//        MemberService memberService = appConfig.memberService();
+
+        // Spring으로 전환
+        ApplicationContext applicationContext
+                = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        MemberService memberService = // argument : Spring Container에 @Bean으로 등록된 "메서드 이름", 반환 타입
+            applicationContext.getBean("memberService", MemberService.class);
+
         // 멤버 객체 생성
         // Ctrl + Alt + v
         Member member = new Member(1L, "MC9", Grade.VIP);
