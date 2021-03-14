@@ -3,7 +3,10 @@ package hello.core.order;
 import hello.core.discountpolicy.DiscountPollicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
     // 메모리 or DB에서 회원정보를 불러내야 하기 때문에
@@ -16,6 +19,7 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPollicy discountPollicy;    // final 써주면 처음 선언할 때 무조건 할당해주어야 함!! (C언어에서 const 같이;;)
 
     // 생성자 주입 → DIP 위반을 해결
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPollicy discountPollicy) {
         this.memberRepository = memberRepository;
         this.discountPollicy = discountPollicy;

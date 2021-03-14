@@ -1,5 +1,8 @@
 package hello.core;
 
+import hello.core.member.MemberRepository;
+import hello.core.member.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -14,5 +17,14 @@ import org.springframework.context.annotation.FilterType;
 //   && Filter로 제외해줄 클래스 지정 가능!
 //   && @Configuration도 소스코드 열어보면 @Component 붙어있음!
 public class AutoAppConfig {
+    // 텅텅~
 
+    // [수동 빈 등록 Test]
+    // hello.core.member 패키지 내 MemoryMemberRepository 구현체 클래스가 있다고 하더라도
+    // 밑의 코드에서는 수동으로 등록해주었기 때문에 우선권을 가짐!!
+    // 즉, hello.core.member 패키지 내 MemoryMemberRepository를 덮어버림(오버라이딩!!!)
+//    @Bean(name="memoryMemberRepository")
+//    MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 }

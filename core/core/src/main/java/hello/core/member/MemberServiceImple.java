@@ -1,5 +1,9 @@
 package hello.core.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImple implements MemberService {
 
     // 가입하고 회원 조회하려면 필요한 것!?!? ▶ MemberRepository!
@@ -9,6 +13,7 @@ public class MemberServiceImple implements MemberService {
     // → 추상화(MemberRepository)에만 의존!
     //   구현체(MemoryMemberRepository)에 의존 X
 
+    @Autowired
     public MemberServiceImple(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
