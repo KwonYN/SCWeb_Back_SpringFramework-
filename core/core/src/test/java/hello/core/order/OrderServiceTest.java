@@ -30,6 +30,6 @@ public class OrderServiceTest {
 
         Order testOrder = orderService.createOrder(memberId, "Jibegagoshipdda", 9999);
 
-        Assertions.assertThat(testOrder.getDiscoutPrice()).isEqualTo(1000);
+        Assertions.assertThat(testOrder.getDiscoutPrice()).isEqualTo(999);
     }
 }
