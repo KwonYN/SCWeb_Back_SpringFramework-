@@ -21,8 +21,10 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'javax.inject:javax.inject:1'
+	// implementation으로추가하면 External Libraries에 추가됨!!
+	implementation 'org.springframework.boot:spring-boot-starter' // springboot
+	implementation 'javax.inject:javax.inject:1' // JSR-330 Provider  추가
+	implementation 'org.springframework.boot:spring-boot-starter-web' // web 라이브러리 추가
 
 	// lombok 라이브러리 추가 시작
 	compileOnly 'org.projectlombok:lombok'
